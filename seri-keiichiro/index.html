@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>占い師 芹 圭伊千郎 (占屋伊千夜) - Linktree & Business Card</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@300;400;600&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- QR Code Generator Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" integrity="sha512-CNgIRecGo7nOMQLkYBtcI7YMcLk9t+CY8ERWZca8F14F5vM13udhy9icdh6wtms1tPQnhmPMT56OKeqhjs6jQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <style>
+        :root {
+            --bg: #090615;
+            --primary: #d4af37; /* Metallic Gold */
+            --primary-glow: rgba(212, 175, 55, 0.4);
+            --secondary: #8a2be2; /* Mystical Violet */
+            --secondary-glow: rgba(138, 43, 226, 0.3);
+            --card-bg: rgba(20, 15, 38, 0.65);
+            --card-border: rgba(212, 175, 55, 0.15);
+            --text-light: #f5f4f9;
+            --text-dim: #a5a1b8;
+            --font-display: 'Cinzel', 'Noto Serif JP', serif;
+            --font-sans: 'Inter', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--bg);
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(138, 43, 226, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(212, 175, 55, 0.08) 0%, transparent 40%),
+                url('hero.png');
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+            color: var(--text-light);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Ambient Stars Overlay */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background-image: radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px);
+            background-size: 550px 550px;
+            background-repeat: repeat;
+            opacity: 0.25;
+            z-index: 0;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 540px;
+            padding: 2.5rem 1.5rem;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        /* Profile Section */
+        .profile {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .avatar-container {
+            position: relative;
+            width: 128px;
+            height: 128px;
+            margin-bottom: 1.5rem;
+        }
+
+        .avatar-glow {
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            opacity: 0.8;
+            filter: blur(8px);
+            animation: pulse 3s infinite alternate;
+            z-index: 1;
+        }
+
+        .avatar {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 2px solid var(--primary);
+            object-fit: cover;
+            z-index: 2;
+            background-color: #120e26;
+        }
+
+        .name {
+            font-family: var(--font-display);
+            font-size: 1.85rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            color: #ffffff;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+            margin-bottom: 0.25rem;
+        }
+
+        .title {
+            font-family: var(--font-display);
+            font-size: 0.95rem;
+            color: var(--primary);
+            letter-spacing: 0.15em;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .bio-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 1.25rem;
+            font-size: 0.95rem;
+            color: var(--text-dim);
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            margin-bottom: 0.5rem;
+        }
+
+        .bio-tagline {
+            color: var(--text-light);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-family: var(--font-display);
+        }
+
+        /* Link Buttons */
+        .links-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .link-btn {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.1rem 1.5rem;
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--card-border);
+            border-radius: 14px;
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 0.03em;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        .link-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.15), transparent);
+            transition: all 0.6s;
+        }
+
+        .link-btn:hover {
+            transform: translateY(-3px);
+            border-color: var(--primary);
+            box-shadow: 0 8px 25px var(--primary-glow);
+        }
+
+        .link-btn:hover::before {
+            left: 100%;
+        }
+
+        .link-btn-content {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+        }
+
+        .link-icon {
+            font-size: 1.35rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+        }
+
+        .arrow-icon {
+            opacity: 0.5;
+            transition: transform 0.3s;
+        }
+
+        .link-btn:hover .arrow-icon {
+            transform: translateX(4px);
+            opacity: 1;
+            color: var(--primary);
+        }
+
+        /* Brand Colors for Icons */
+        .color-web { color: #5ce1e6; }
+        .color-line { color: #06c755; }
+        .color-insta { color: #e1306c; }
+        .color-youtube { color: #ff0000; }
+
+        /* Store Details Card */
+        .store-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .store-header {
+            font-family: var(--font-display);
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--primary);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            padding-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .store-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+            font-size: 0.95rem;
+        }
+
+        .store-label {
+            font-weight: 600;
+            color: var(--text-light);
+            min-width: 80px;
+        }
+
+        .store-value {
+            color: var(--text-dim);
+            flex: 1;
+        }
+
+        .store-value a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .store-value a:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        /* Print Card Section */
+        .print-card-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            color: #ffffff;
+            text-align: center;
+            letter-spacing: 0.08em;
+            position: relative;
+            padding-bottom: 0.6rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+        }
+
+        /* Business Card Layouts */
+        .cards-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            width: 100%;
+            align-items: center;
+        }
+
+        .biz-card-wrapper {
+            perspective: 1000px;
+            width: 340px; /* Scaled down slightly for mobile layout (91:55 ratio) */
+            height: 205px;
+        }
+
+        .biz-card {
+            width: 100%;
+            height: 100%;
+            background: #100b26;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 1.25rem;
+            background-image: 
+                radial-gradient(circle at 100% 0%, rgba(138, 43, 226, 0.25) 0%, transparent 60%),
+                radial-gradient(circle at 0% 100%, rgba(212, 175, 55, 0.15) 0%, transparent 60%);
+        }
+
+        /* Front Card Details */
+        .card-front-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .card-brand {
+            font-family: var(--font-display);
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .card-constellation {
+            font-size: 1.1rem;
+            color: var(--primary);
+            opacity: 0.8;
+        }
+
+        .card-profile {
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+
+        .card-name {
+            font-family: var(--font-display);
+            font-size: 1.45rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            color: #ffffff;
+            margin-bottom: 0.1rem;
+        }
+
+        .card-title {
+            font-family: var(--font-sans);
+            font-size: 0.65rem;
+            color: var(--primary);
+            letter-spacing: 0.15em;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .card-front-footer {
+            font-size: 0.65rem;
+            color: var(--text-dim);
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 0.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.15rem;
+        }
+
+        /* Back Card Details */
+        .biz-card-back {
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            gap: 0.8rem;
+        }
+
+        .back-logo {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            color: var(--primary);
+            letter-spacing: 0.25em;
+            font-weight: 700;
+            margin-bottom: 0.2rem;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+        }
+
+        .qr-placeholder {
+            width: 84px;
+            height: 84px;
+            background: #ffffff;
+            padding: 5px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        #qrcode img {
+            width: 100% !important;
+            height: 100% !important;
+        }
+
+        .back-instructions {
+            font-size: 0.6rem;
+            color: var(--text-dim);
+            letter-spacing: 0.05em;
+        }
+
+        .back-web {
+            font-size: 0.65rem;
+            color: var(--primary);
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+
+        /* Save Button */
+        .save-btn {
+            background: linear-gradient(135deg, var(--primary), #b59228);
+            color: #000000;
+            border: none;
+            padding: 0.85rem 2rem;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .save-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
+            background: linear-gradient(135deg, #f0ca4d, var(--primary));
+        }
+
+        .save-btn-desc {
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            text-align: center;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: auto;
+            padding: 2.5rem 1.5rem 1.5rem;
+            text-align: center;
+            color: var(--text-dim);
+            font-size: 0.75rem;
+            letter-spacing: 0.05em;
+            z-index: 10;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.6; }
+            100% { transform: scale(1.04); opacity: 0.9; }
+        }
+
+        /* Print Media Styles */
+        @media print {
+            body {
+                background: #ffffff !important;
+                color: #000000 !important;
+            }
+            .stars, .profile, .links-list, .store-card, .section-title, .save-btn, .save-btn-desc, footer {
+                display: none !important;
+            }
+            .container {
+                max-width: 100% !important;
+                padding: 0 !important;
+            }
+            .cards-container {
+                gap: 20mm !important;
+            }
+            .biz-card-wrapper {
+                width: 91mm !important;
+                height: 55mm !important;
+                page-break-inside: avoid;
+            }
+            .biz-card {
+                width: 91mm !important;
+                height: 55mm !important;
+                border: 1px solid #000000 !important;
+                box-shadow: none !important;
+                background: #ffffff !important;
+                background-image: none !important;
+                color: #000000 !important;
+            }
+            .card-name, .back-logo {
+                color: #000000 !important;
+            }
+            .card-title, .card-brand, .back-web, .card-constellation {
+                color: #555555 !important;
+            }
+            .card-front-footer, .back-instructions {
+                color: #444444 !important;
+            }
+            .qr-placeholder {
+                box-shadow: none !important;
+                border: 1px solid #000000 !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="stars"></div>
+
+    <div class="container">
+        
+        <!-- Profile -->
+        <header class="profile">
+            <div class="avatar-container">
+                <div class="avatar-glow"></div>
+                <img src="avatar.png" alt="芹 圭伊千郎" class="avatar">
+            </div>
+            <h1 class="name">芹 圭伊千郎</h1>
+            <p class="title">占い師 / 占屋伊千夜 代表</p>
+            
+            <div class="bio-card">
+                <p class="bio-tagline">🔮 松山で最も楽しい占い師</p>
+                <p>多様な人生経験を経て算命学、タロット、手相などの占術を習得。対面鑑定のほか、LINE通話・ビデオ鑑定も対応しております。ご相談いただいた皆様を明るく前向きな笑顔にする鑑定をお届けします。</p>
+            </div>
+        </header>
+
+        <!-- Links -->
+        <main class="links-list">
+            
+            <!-- Official Web -->
+            <a href="https://ehime-uranai-senyaichiya.com/" class="link-btn" target="_blank">
+                <div class="link-btn-content">
+                    <span class="link-icon color-web">🔮</span>
+                    <span>占屋伊千夜 公式サイト</span>
+                </div>
+                <span class="arrow-icon">➔</span>
+            </a>
+
+            <!-- LINE -->
+            <a href="https://line.me/R/ti/p/@senya_ichiya" class="link-btn" target="_blank">
+                <div class="link-btn-content">
+                    <span class="link-icon color-line">💬</span>
+                    <span>公式LINE (ご予約・お問い合わせ)</span>
+                </div>
+                <span class="arrow-icon">➔</span>
+            </a>
+
+            <!-- Instagram -->
+            <a href="https://www.instagram.com/seri.keiichiro/" class="link-btn" target="_blank">
+                <div class="link-btn-content">
+                    <span class="link-icon color-insta">📸</span>
+                    <span>公式Instagram (@seri.keiichiro)</span>
+                </div>
+                <span class="arrow-icon">➔</span>
+            </a>
+
+            <!-- YouTube -->
+            <a href="https://www.youtube.com/@Seri.Keiichiro" class="link-btn" target="_blank">
+                <div class="link-btn-content">
+                    <span class="link-icon color-youtube">🎥</span>
+                    <span>YouTube「うらバラ！」</span>
+                </div>
+                <span class="arrow-icon">➔</span>
+            </a>
+
+        </main>
+
+        <!-- Shop Info -->
+        <section class="store-card">
+            <h2 class="store-header">📍 店舗情報 - 占屋伊千夜</h2>
+            
+            <div class="store-item">
+                <span class="store-label">住所</span>
+                <span class="store-value">
+                    <a href="https://maps.google.com/?q=愛媛県松山市末広町11-2" target="_blank">
+                        愛媛県松山市末広町11-2 伊千景館
+                    </a>
+                </span>
+            </div>
+            
+            <div class="store-item">
+                <span class="store-label">電話番号</span>
+                <span class="store-value">
+                    <a href="tel:080-3404-8101">080-3404-8101</a>
+                </span>
+            </div>
+
+            <div class="store-item">
+                <span class="store-label">営業時間</span>
+                <span class="store-value">10:00 〜 深夜3:00 (予約制)</span>
+            </div>
+
+            <div class="store-item">
+                <span class="store-label">決済方法</span>
+                <span class="store-value">現金 / PayPay / 銀行振込</span>
+            </div>
+        </section>
+
+        <!-- Business Card Section -->
+        <section class="print-card-section">
+            <h2 class="section-title">DIGITAL BUSINESS CARD</h2>
+            
+            <div class="cards-container">
+                <!-- Front Card -->
+                <div class="biz-card-wrapper">
+                    <div class="biz-card">
+                        <div class="card-front-header">
+                            <span class="card-brand">占屋伊千夜</span>
+                            <span class="card-constellation">✨</span>
+                        </div>
+                        <div class="card-profile">
+                            <h3 class="card-name">芹 圭伊千郎</h3>
+                            <p class="card-title">占い師 / 代表</p>
+                        </div>
+                        <div class="card-front-footer">
+                            <span>📞 080-3404-8101</span>
+                            <span>📍 愛媛県松山市末広町11-2 伊千景館</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Back Card -->
+                <div class="biz-card-wrapper">
+                    <div class="biz-card biz-card-back">
+                        <div class="back-logo">占屋伊千夜</div>
+                        <div class="qr-placeholder" id="qrcode"></div>
+                        <div class="back-instructions">スマホで読み取るとプロフィール・ご予約画面が開きます</div>
+                        <div class="back-web">ehime-uranai-senyaichiya.com</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Print Trigger -->
+            <button class="save-btn" onclick="window.print()">
+                <span>🖨️</span> 名刺デザインを印刷する
+            </button>
+            <p class="save-btn-desc">※PCやスマホから印刷ダイアログを呼び出し、名刺用の用紙に両面印刷できます。スマホの場合は長押し保存も可能です。</p>
+        </section>
+
+    </div>
+
+    <footer>
+        &copy; 2026 占屋伊千夜. All Rights Reserved.
+    </footer>
+
+    <script>
+        // Generate QR code dynamically based on current site URL
+        window.addEventListener('DOMContentLoaded', (event) => {
+            const currentUrl = window.location.href;
+            new QRCode(document.getElementById("qrcode"), {
+                text: currentUrl,
+                width: 120,
+                height: 120,
+                colorDark : "#0f0b26",
+                colorLight : "#ffffff",
+                correctLevel : QRCode.CorrectLevel.H
+            });
+        });
+    </script>
+</body>
+</html>
