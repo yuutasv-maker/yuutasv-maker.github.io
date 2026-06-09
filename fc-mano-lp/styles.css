@@ -259,6 +259,14 @@ ul {
   opacity: 0;
 }
 
+.hero-logo {
+  display: block;
+  width: 280px;
+  height: auto;
+  margin: 0 auto;
+  filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.5));
+}
+
 .concept {
   font-size: 1.5rem;
   color: var(--text-muted);
@@ -393,8 +401,10 @@ ul {
 }
 
 .hexagon:nth-child(1) { top: 0; left: 50px; animation: float 6s ease-in-out infinite; }
-.hexagon:nth-child(2) { top: 90px; left: 0; animation: float 5s ease-in-out infinite 1s; }
-.hexagon:nth-child(3) { top: 90px; left: 100px; animation: float 7s ease-in-out infinite 2s; }
+.hexagon:nth-child(2) { top: 0; left: 150px; animation: float 5s ease-in-out infinite 1s; }
+.hexagon:nth-child(3) { top: 90px; left: 0; animation: float 7s ease-in-out infinite 2s; }
+.hexagon:nth-child(4) { top: 90px; left: 100px; animation: float 6s ease-in-out infinite 0.5s; }
+.hexagon:nth-child(5) { top: 90px; left: 200px; animation: float 8s ease-in-out infinite 1.5s; }
 
 .hexagon:hover {
   background-color: rgba(255, 215, 0, 0.3);
@@ -410,7 +420,7 @@ ul {
 /* Teams Section */
 .cards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(350px, 100%), 1fr));
   gap: 40px;
   margin-top: 50px;
 }
@@ -448,7 +458,21 @@ ul {
   transform: scaleX(1);
 }
 
+.team-crest {
+  display: block;
+  width: 140px;
+  height: auto;
+  margin: 0 auto 25px;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.4));
+  transition: var(--transition);
+}
+
+.card:hover .team-crest {
+  transform: scale(1.05) translateY(-5px);
+}
+
 .card-icon {
+  display: none; /* Replaced by crests */
   font-size: 3rem;
   margin-bottom: 20px;
 }
@@ -489,6 +513,24 @@ ul {
   position: absolute;
   left: 0;
   color: var(--primary);
+}
+
+/* Top Team Specific Styles (Light Blue) */
+.top-team::before {
+  background: #38bdf8;
+}
+
+.top-team:hover {
+  border-color: rgba(56, 189, 248, 0.4);
+  box-shadow: 0 20px 40px rgba(56, 189, 248, 0.15);
+}
+
+.top-team h4 {
+  color: #38bdf8;
+}
+
+.top-team .team-features li::before {
+  color: #38bdf8;
 }
 
 /* Activities */
@@ -662,5 +704,21 @@ footer {
   
   .section-padding {
     padding: 80px 0;
+  }
+
+  .card {
+    padding: 30px 20px;
+  }
+
+  .team-crest {
+    width: 110px;
+  }
+
+  .team-card h3 {
+    font-size: 1.6rem;
+  }
+
+  .cards-grid {
+    gap: 25px;
   }
 }
