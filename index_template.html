@@ -16,8 +16,6 @@
             --text-dim: #94a3b8;
             --accent: #38bdf8;
             --accent-glow: rgba(56, 189, 248, 0.2);
-            --danger: #ef4444;
-            --danger-glow: rgba(239, 68, 68, 0.3);
         }
         body {
             margin: 0;
@@ -49,25 +47,7 @@
             margin-bottom: 1.5rem;
             font-size: 1.1rem;
         }
-        .toolbar {
-            display: flex;
-            justify-content: flex-end;
-            margin-bottom: 1.5rem;
-        }
-        .edit-toggle {
-            background: transparent;
-            border: 1px solid var(--text-dim);
-            color: var(--text-dim);
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        .edit-toggle:hover, .edit-toggle.active {
-            border-color: var(--danger);
-            color: var(--danger);
-        }
+
         .project-list {
             display: grid;
             gap: 1rem;
@@ -106,85 +86,7 @@
             height: 24px;
             fill: var(--accent);
         }
-        .delete-btn {
-            display: none;
-            position: absolute;
-            top: 50%;
-            right: 12px;
-            transform: translateY(-50%);
-            background: var(--danger);
-            border: none;
-            color: white;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            font-size: 1.2rem;
-            cursor: pointer;
-            z-index: 10;
-            transition: box-shadow 0.3s;
-        }
-        .delete-btn:hover {
-            box-shadow: 0 0 15px var(--danger-glow);
-        }
-        body.edit-mode .delete-btn {
-            display: block;
-        }
-        body.edit-mode .project-card {
-            pointer-events: none;
-            opacity: 0.7;
-        }
-        body.edit-mode .project-card-wrapper:hover .project-card {
-            border-color: var(--danger);
-        }
 
-        /* 確認ダイアログ */
-        .confirm-overlay {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0,0,0,0.7);
-            z-index: 100;
-            align-items: center;
-            justify-content: center;
-        }
-        .confirm-overlay.show { display: flex; }
-        .confirm-box {
-            background: var(--card-bg);
-            border: 1px solid rgba(255,255,255,0.15);
-            border-radius: 16px;
-            padding: 2rem;
-            text-align: center;
-            max-width: 320px;
-            width: 90%;
-        }
-        .confirm-box h3 { margin-top: 0; }
-        .confirm-box .project-name {
-            color: var(--danger);
-            font-weight: 700;
-            font-size: 1.2rem;
-        }
-        .confirm-btns {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-        .confirm-btns button {
-            flex: 1;
-            padding: 0.8rem;
-            border: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-        }
-        .btn-cancel {
-            background: #334155;
-            color: var(--text);
-        }
-        .btn-confirm-delete {
-            background: var(--danger);
-            color: white;
-        }
 
         footer {
             margin-top: auto;
@@ -198,82 +100,18 @@
     <div class="container">
         <h1>Project Portal</h1>
         <p class="subtitle">Deployed Workspaces & Experiments</p>
-        <div class="toolbar">
-            <button class="edit-toggle" onclick="toggleEditMode()">🗑️ 編集</button>
-        </div>
+
         <div class="project-list">
             <!-- PROJECT_LIST_HOLDER -->
         </div>
     </div>
 
-    <div class="confirm-overlay" id="confirmOverlay">
-        <div class="confirm-box">
-            <h3>本当に削除しますか？</h3>
-            <p><span class="project-name" id="deleteTargetName"></span></p>
-            <p style="color:var(--text-dim);font-size:0.85rem;">サーバーから完全に削除されます。</p>
-            <div class="confirm-btns">
-                <button class="btn-cancel" onclick="closeConfirm()">キャンセル</button>
-                <button class="btn-confirm-delete" onclick="confirmDelete()">削除する</button>
-            </div>
-        </div>
-    </div>
+
 
     <footer>
         &copy; 2026 Deployed via Antigravity Deployer
     </footer>
 
-    <script>
-        let editMode = false;
-        let pendingDelete = null;
 
-        function toggleEditMode() {
-            editMode = !editMode;
-            document.body.classList.toggle('edit-mode', editMode);
-            const btn = document.querySelector('.edit-toggle');
-            btn.textContent = editMode ? '✅ 完了' : '🗑️ 編集';
-            btn.classList.toggle('active', editMode);
-        }
-
-        function requestDelete(name) {
-            pendingDelete = name;
-            document.getElementById('deleteTargetName').textContent = name;
-            document.getElementById('confirmOverlay').classList.add('show');
-        }
-
-        function closeConfirm() {
-            document.getElementById('confirmOverlay').classList.remove('show');
-            pendingDelete = null;
-        }
-
-        function confirmDelete() {
-            if (!pendingDelete) return;
-            const name = pendingDelete;
-            closeConfirm();
-
-            fetch('delete.php', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    token: 'antigravity-delete-2026',
-                    project: name
-                })
-            })
-            .then(r => r.json())
-            .then(data => {
-                if (data.success) {
-                    const wrapper = document.querySelector(`[data-project="${name}"]`);
-                    if (wrapper) {
-                        wrapper.style.transition = 'all 0.3s';
-                        wrapper.style.opacity = '0';
-                        wrapper.style.transform = 'translateX(100px)';
-                        setTimeout(() => wrapper.remove(), 300);
-                    }
-                } else {
-                    alert('削除に失敗しました: ' + (data.error || '不明なエラー'));
-                }
-            })
-            .catch(() => alert('通信エラーが発生しました'));
-        }
-    </script>
 </body>
 </html>
