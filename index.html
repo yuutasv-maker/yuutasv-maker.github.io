@@ -1,0 +1,117 @@
+<!-- index_template.html -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Portal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Outfit:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0f172a;
+            --card-bg: #1e293b;
+            --text: #f8fafc;
+            --text-dim: #94a3b8;
+            --accent: #38bdf8;
+            --accent-glow: rgba(56, 189, 248, 0.2);
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            width: 100%;
+            max-width: 800px;
+            padding: 4rem 2rem;
+            box-sizing: border-box;
+        }
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #fff 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .subtitle {
+            color: var(--text-dim);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .project-list {
+            display: grid;
+            gap: 1rem;
+        }
+        .project-card-wrapper {
+            position: relative;
+        }
+        .project-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .project-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+            box-shadow: 0 10px 30px -10px var(--accent-glow);
+        }
+        .project-info h3 {
+            margin: 0;
+            font-size: 1.25rem;
+        }
+        .project-info p {
+            margin: 0.25rem 0 0;
+            color: var(--text-dim);
+            font-size: 0.9rem;
+        }
+        .arrow {
+            width: 24px;
+            height: 24px;
+            fill: var(--accent);
+        }
+
+
+        footer {
+            margin-top: auto;
+            padding: 2rem;
+            color: var(--text-dim);
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Project Portal</h1>
+        <p class="subtitle">Deployed Workspaces & Experiments</p>
+
+        <div class="project-list">
+            <div class='project-card-wrapper'><a href='brick-breaker/' class='project-card'><div class='project-info'><h3>brick-breaker</h3><p>Last updated: 2026-06-10 02:19</p></div><svg class='arrow' viewBox='0 0 24 24' width='24' height='24'><path fill='currentColor' d='M8.59,16.59L13.17,12L8.59,7.41L10,6l6,6l-6,6L8.59,16.59z'/></svg></a></div><div class='project-card-wrapper'><a href='yamada-usagi/' class='project-card'><div class='project-info'><h3>yamada-usagi</h3><p>Last updated: 2026-06-10 02:19</p></div><svg class='arrow' viewBox='0 0 24 24' width='24' height='24'><path fill='currentColor' d='M8.59,16.59L13.17,12L8.59,7.41L10,6l6,6l-6,6L8.59,16.59z'/></svg></a></div><div class='project-card-wrapper'><a href='owl-bio/' class='project-card'><div class='project-info'><h3>owl-bio</h3><p>Last updated: 2026-06-10 02:19</p></div><svg class='arrow' viewBox='0 0 24 24' width='24' height='24'><path fill='currentColor' d='M8.59,16.59L13.17,12L8.59,7.41L10,6l6,6l-6,6L8.59,16.59z'/></svg></a></div><div class='project-card-wrapper'><a href='music-shooter/' class='project-card'><div class='project-info'><h3>music-shooter</h3><p>Last updated: 2026-06-10 02:19</p></div><svg class='arrow' viewBox='0 0 24 24' width='24' height='24'><path fill='currentColor' d='M8.59,16.59L13.17,12L8.59,7.41L10,6l6,6l-6,6L8.59,16.59z'/></svg></a></div><div class='project-card-wrapper'><a href='chinchiro/' class='project-card'><div class='project-info'><h3>chinchiro</h3><p>Last updated: 2026-06-10 02:19</p></div><svg class='arrow' viewBox='0 0 24 24' width='24' height='24'><path fill='currentColor' d='M8.59,16.59L13.17,12L8.59,7.41L10,6l6,6l-6,6L8.59,16.59z'/></svg></a></div><div class='project-card-wrapper'><a href='mano-mabo-bio/' class='project-card'><div class='project-info'><h3>mano-mabo-bio</h3><p>Last updated: 2026-06-10 02:19</p></div><svg class='arrow' viewBox='0 0 24 24' width='24' height='24'><path fill='currentColor' d='M8.59,16.59L13.17,12L8.59,7.41L10,6l6,6l-6,6L8.59,16.59z'/></svg></a></div><div class='project-card-wrapper'><a href='fc-mano-lp/' class='project-card'><div class='project-info'><h3>fc-mano-lp</h3><p>Last updated: 2026-06-10 02:19</p></div><svg class='arrow' viewBox='0 0 24 24' width='24' height='24'><path fill='currentColor' d='M8.59,16.59L13.17,12L8.59,7.41L10,6l6,6l-6,6L8.59,16.59z'/></svg></a></div>
+        </div>
+    </div>
+
+
+
+    <footer>
+        &copy; 2026 Deployed via Antigravity Deployer
+    </footer>
+
+
+</body>
+</html>

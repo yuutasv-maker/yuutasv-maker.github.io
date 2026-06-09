@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>いけだ屋 | Digital Business Card</title>
+    <meta name="description" content="キッチンカーの唐揚げ「いけだ屋」公式デジタル名刺。出店情報・お問い合わせはこちら。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="hero-bg">
+        <div class="gradient-bg"></div>
+        <div class="overlay"></div>
+    </div>
+
+    <main class="card-container">
+        <header class="profile">
+            <div class="profile-icon"><img src="hero.jpg" alt="いけだ屋ロゴ" class="logo-img"></div>
+            <h1 class="name">いけだ屋</h1>
+            <p class="handle">@karaage_ikedaya</p>
+            <p class="tagline">唐揚げとレモンサワー</p>
+            <p class="bio">キッチンカーの唐揚げ「いけだ屋」🚚<br>出店情報やお得なクーポンを配布中！</p>
+        </header>
+
+        <section class="links">
+            <a href="https://www.instagram.com/karaage_ikedaya" class="link-btn primary">
+                <span class="icon">📸</span>
+                <span class="link-label">INSTAGRAM</span>
+                <span class="sub">出店情報 & クーポン配布中</span>
+            </a>
+            <a href="https://www.instagram.com/barmanoamano" class="link-btn">
+                <span class="icon">🍸</span>
+                <span class="link-label">BAR mano a mano</span>
+                <span class="sub">BARの生レモンサワー</span>
+            </a>
+        </section>
+
+        <section class="share">
+            <p class="share-text">SHARE THIS CARD</p>
+            <div class="qr-wrapper">
+                <img id="qrCode" src="" alt="Scan QR Code" class="qr-img">
+            </div>
+            <p class="qr-info">カメラで読み取ってページを保存</p>
+        </section>
+
+        <section class="print-cards">
+            <h2 class="print-title">📇 PRINT CARD</h2>
+            <p class="print-desc">長押しで画像を保存 → 印刷してお使いください</p>
+
+            <div class="card-preview-area">
+                <p class="card-label">— おもて —</p>
+                <div class="biz-card front" id="cardFront">
+                    <div class="card-accent-top"></div>
+                    <div class="card-body">
+                        <div class="card-logo"><img src="hero.jpg" alt="いけだ屋" class="card-logo-img"></div>
+                        <h3 class="card-name">いけだ屋</h3>
+                        <p class="card-tagline">唐揚げとレモンサワー</p>
+                        <p class="card-type">Kitchen Car</p>
+                    </div>
+                    <div class="card-accent-bottom"></div>
+                </div>
+
+                <p class="card-label">— うら —</p>
+                <div class="biz-card back" id="cardBack">
+                    <div class="card-accent-top"></div>
+                    <div class="card-back-body">
+                        <div class="card-info-block">
+                            <p class="card-sns-main">IG: @karaage_ikedaya</p>
+                            <p class="card-sns">BAR: @barmanoamano</p>
+                            <p class="card-note">出店情報はInstagramで<br>随時更新中！🚚</p>
+                        </div>
+                        <div class="card-qr">
+                            <img id="cardQr" src="" alt="QR" class="card-qr-img">
+                        </div>
+                    </div>
+                    <div class="card-accent-bottom"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 いけだ屋 / Powered by Antigravity</p>
+    </footer>
+    <script>
+        const pageUrl = encodeURIComponent(window.location.href);
+        const qrSrc = 'https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=' + pageUrl;
+        document.getElementById('qrCode').src = qrSrc;
+        const cardQr = document.getElementById('cardQr');
+        if (cardQr) cardQr.src = 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=' + pageUrl;
+    </script>
+</body>
+</html>

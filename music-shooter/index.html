@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Acoustic Attacker | Music Shooter</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="game-container">
+        <canvas id="gameCanvas"></canvas>
+        
+        <div id="ui-layer">
+            <div id="hud">
+                <div class="stat">SCORE: <span id="score">0</span></div>
+                <div class="stat">HI-SCORE: <span id="hi-score">0</span></div>
+                <div class="stat">STAGE: <span id="stage">1</span></div>
+                <div class="stat">LIVES: <span id="lives">3</span></div>
+                <div class="health-bar-container">
+                    <div id="health-bar"></div>
+                </div>
+            </div>
+            
+            <div id="start-screen" class="overlay">
+                <h1 class="title">ACOUSTIC<br>ATTACKER</h1>
+                <p class="subtitle">音の妖精と不協和音の戦い</p>
+                <button id="start-btn" class="main-btn">SESSION START</button>
+                <p class="controls-hint">ドラッグで移動 / 自動連射</p>
+            </div>
+
+            <div id="continue-screen" class="overlay hidden">
+                <h2 class="title">CONTINUE?</h2>
+                <p id="lives-left">REMAINING LIVES: 3</p>
+                <button id="continue-btn" class="main-btn">RESUME SESSION</button>
+            </div>
+
+            <div id="game-over-screen" class="overlay hidden">
+                <h2 class="title">REPLAY?</h2>
+                <p id="final-score">SCORE: 0</p>
+                <button id="restart-btn" class="main-btn">RETRY</button>
+            </div>
+
+            <div id="clear-screen" class="overlay hidden">
+                <h2 class="title">STAGE CLEAR!</h2>
+                <p class="next-hint">Next Session Loading...</p>
+            </div>
+
+            <div id="all-clear-screen" class="overlay hidden">
+                <h2 class="title">ALL CLEAR!</h2>
+                <p class="subtitle">最高の音楽が世界に響きました</p>
+                <button id="back-btn" class="main-btn">SESSION FINISHED</button>
+            </div>
+        </div>
+
+        <!-- Virtual Joystick for Mobile -->
+        <div id="joystick-container">
+            <div id="joystick-base">
+                <div id="joystick-stick"></div>
+            </div>
+        </div>
+    </div>
+    <script src="game.js"></script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>チンチロ | Chinchiro Game</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1>チンチロ <span class="subtitle">Chinchiro</span></h1>
+        </header>
+
+        <main>
+            <div class="game-board">
+                <div class="bowl-container">
+                    <div class="bowl" id="bowl">
+                        <div class="dice-container" id="dice-container">
+                            <!-- Dice will be injected here -->
+                            <div class="dice" id="dice-1">
+                                <div class="face front"><span class="pip red"></span></div>
+                                <div class="face back"><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div>
+                                <div class="face right"><span class="pip"></span><span class="pip"></span><span class="pip"></span></div>
+                                <div class="face left"><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div>
+                                <div class="face top"><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div>
+                                <div class="face bottom"><span class="pip"></span><span class="pip"></span></div>
+                            </div>
+                            <div class="dice" id="dice-2">
+                                <div class="face front"><span class="pip red"></span></div>
+                                <div class="face back"><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div>
+                                <div class="face right"><span class="pip"></span><span class="pip"></span><span class="pip"></span></div>
+                                <div class="face left"><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div>
+                                <div class="face top"><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div>
+                                <div class="face bottom"><span class="pip"></span><span class="pip"></span></div>
+                            </div>
+                            <div class="dice" id="dice-3">
+                                <div class="face front"><span class="pip red"></span></div>
+                                <div class="face back"><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div>
+                                <div class="face right"><span class="pip"></span><span class="pip"></span><span class="pip"></span></div>
+                                <div class="face left"><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div>
+                                <div class="face top"><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div>
+                                <div class="face bottom"><span class="pip"></span><span class="pip"></span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ui-panel glass">
+                    <div class="status-panel">
+                        <div class="turn-indicator">
+                            <span id="current-player">あなたの番です</span>
+                        </div>
+                        <div class="hand-display">
+                            <span id="hand-name">-</span>
+                        </div>
+                    </div>
+
+                    <div class="action-panel">
+                        <button id="roll-button" class="btn primary">ダイスを振る</button>
+                        <button id="next-turn" class="btn secondary hidden">次のターンへ</button>
+                    </div>
+
+                    <div class="result-overlay hidden" id="result-overlay">
+                        <h2 id="winner-text">勝ち！</h2>
+                        <button id="restart-button" class="btn glass-btn">もう一度遊ぶ</button>
+                    </div>
+
+                    <div class="pachinko-overlay hidden" id="pachinko-overlay">
+                        <div class="pachinko-flash"></div>
+                        <h2 id="pachinko-text" class="pachinko-text">キュイン！</h2>
+                    </div>
+                </div>
+            </div>
+
+            <aside class="sidebar glass">
+                <div class="score-board">
+                    <h3>スコア</h3>
+                    <div class="score-row">
+                        <span>あなた (子)</span>
+                        <span id="player-score">0</span>
+                    </div>
+                    <div class="score-row">
+                        <span>ディーラー (親)</span>
+                        <span id="dealer-score">0</span>
+                    </div>
+                </div>
+
+                <div class="rules-panel">
+                    <h3>役一覧</h3>
+                    <ul>
+                        <li><strong>ピンゾロ (1,1,1):</strong> 最強 (5倍付け)</li>
+                        <li><strong>ゾロ目:</strong> 強 (3倍付け)</li>
+                        <li><strong>シゴロ (4,5,6):</strong> 強 (2倍付け)</li>
+                        <li><strong>目 (役あり):</strong> 通常 (1倍)</li>
+                        <li><strong>ヒフミ (1,2,3):</strong> 弱 (2倍払い)</li>
+                        <li><strong>目なし:</strong> 負け</li>
+                    </ul>
+                </div>
+            </aside>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 Chinchiro Premium</p>
+        </footer>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Neon Brick Breaker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-wrapper">
+        <header>
+            <h1>Neon Breaker</h1>
+            <div class="stats">
+                <div class="score-board">Score: <span id="score">0</span></div>
+                <div class="lives-board">Lives: <span id="lives">3</span></div>
+            </div>
+        </header>
+        
+        <div class="canvas-container">
+            <canvas id="gameCanvas"></canvas>
+            
+            <div id="startScreen" class="overlay">
+                <h2>Ready?</h2>
+                <p>Tap to Start</p>
+                <p class="controls-hint">Drag or Touch to move paddle</p>
+                <button id="startBtn">PLAY NOW</button>
+            </div>
+            
+            <div id="gameOverScreen" class="overlay hidden">
+                <h2>Game Over</h2>
+                <p>Final Score: <span id="finalScore">0</span></p>
+                <button id="restartBtn">TRY AGAIN</button>
+            </div>
+            
+            <div id="victoryScreen" class="overlay hidden">
+                <h2>Victory!</h2>
+                <p>You cleared all blocks!</p>
+                <button id="nextLevelBtn">PLAY AGAIN</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

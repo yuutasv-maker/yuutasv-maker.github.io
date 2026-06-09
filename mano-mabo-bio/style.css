@@ -1,0 +1,254 @@
+:root {
+    --primary-color: #FFD700;
+    --text-color: #FFFFFF;
+    --dark-bg: rgba(20, 20, 20, 0.85);
+    --btn-bg: rgba(0, 0, 0, 0.7);
+    --btn-hover: rgba(0, 0, 0, 0.9);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: url('hero_bg.png') center/cover no-repeat fixed;
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Digital LP */
+.digital-lp {
+    width: 100%;
+    max-width: 480px;
+    padding: 40px 20px;
+    background: var(--dark-bg);
+    backdrop-filter: blur(12px);
+    border-radius: 0 0 24px 24px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-header {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.profile-pic {
+    width: 100px;
+    height: 100px;
+    background: var(--primary-color);
+    color: #000;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: 800;
+    font-family: 'Outfit', sans-serif;
+    margin: 0 auto 16px;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+}
+
+h1 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--primary-color);
+}
+
+.bio {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #ddd;
+}
+
+.link-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.btn {
+    display: block;
+    width: 100%;
+    padding: 16px;
+    background: var(--btn-bg);
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: 600;
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    background: var(--btn-hover);
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+.btn.primary-btn {
+    background: var(--primary-color);
+    color: #000;
+    font-weight: 700;
+    font-size: 1.1rem;
+    border: none;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+}
+
+.btn.primary-btn:hover {
+    background: #ffea5c;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.5);
+}
+
+/* Physical Print Cards Section */
+.physical-card-section {
+    width: 100%;
+    max-width: 480px;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 40px;
+    background: var(--dark-bg);
+    backdrop-filter: blur(12px);
+    border-radius: 24px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.physical-card-section h2 {
+    font-family: 'Outfit', sans-serif;
+    color: var(--primary-color);
+    margin-bottom: 8px;
+    font-size: 1.5rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+}
+
+.hint {
+    font-size: 0.85rem;
+    color: #ccc;
+    margin-bottom: 24px;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+}
+
+.physical-card {
+    width: 344px;
+    height: 208px;
+    background: #000;
+    margin: 0 auto 24px;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+    border: 2px solid var(--primary-color);
+    text-align: left;
+}
+
+.card-content {
+    width: 100%;
+    height: 100%;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+}
+
+.front {
+    background: linear-gradient(135deg, #111 0%, #000 100%);
+}
+
+.front::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 150px;
+    height: 150px;
+    background: var(--primary-color);
+    opacity: 0.1;
+    border-radius: 50%;
+}
+
+.card-logo {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--primary-color);
+    margin-bottom: 8px;
+    letter-spacing: 2px;
+}
+
+.card-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.card-desc {
+    font-size: 0.75rem;
+    color: #ccc;
+    margin-bottom: 16px;
+    letter-spacing: 1px;
+}
+
+.card-address {
+    font-size: 0.65rem;
+    color: #999;
+    line-height: 1.4;
+    margin-top: auto;
+}
+
+.back {
+    background: var(--primary-color);
+    color: #000;
+    border: 2px solid #000;
+}
+
+.back-content {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.qr-container {
+    background: var(--primary-color);
+    padding: 8px;
+    border: 2px solid #000;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    display: inline-block;
+}
+
+.card-url {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+}
+
+.card-url .dynamic-url {
+    color: #000;
+    font-weight: 800;
+}
+
+.card-url-sub {
+    font-size: 0.65rem;
+    color: #333;
+    font-family: 'Inter', sans-serif;
+}

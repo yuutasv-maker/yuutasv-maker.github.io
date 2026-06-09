@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studio OWL | Digital Business Card</title>
+    <meta name="description" content="松山市のライブハウス・音楽酒場 Studio OWL の公式デジタル名刺。最新スケジュールやInstagram、お問い合わせはこちらから。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&family=Zen+Kaku+Gothic+New:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="hero-bg">
+        <img src="hero.png" alt="Venue Background" class="bg-img">
+        <div class="overlay"></div>
+    </div>
+
+    <main class="card-container">
+        <header class="profile">
+            <div class="profile-icon">🏠</div>
+            <h1 class="name">Studio OWL</h1>
+            <p class="handle">@studio_owl.ehime</p>
+            <p class="bio">愛媛県松山市のライブハウス & 音楽酒場。<br>アコースティックな温もりと、最高の音楽を。</p>
+        </header>
+
+        <section class="links">
+            <a href="https://owl21.info/schedule_/" class="link-btn primary">
+                <span class="icon">🗓️</span>
+                <span class="label">LIVE SCHEDULE</span>
+                <span class="sub">最新の公演情報はこちら</span>
+            </a>
+            <a href="https://owl21.info/" class="link-btn">
+                <span class="icon">🌐</span>
+                <span class="label">OFFICIAL WEBSITE</span>
+                <span class="sub">公式ホームページ</span>
+            </a>
+            <a href="https://www.instagram.com/studio_owl.ehime" class="link-btn">
+                <span class="icon">📸</span>
+                <span class="label">INSTAGRAM</span>
+                <span class="sub">日々の活動をチェック</span>
+            </a>
+            <a href="tel:0899410036" class="link-btn">
+                <span class="icon">📞</span>
+                <span class="label">CALL NOW</span>
+                <span class="sub">ご予約・お問い合わせ</span>
+            </a>
+            <a href="https://maps.google.com/?q=スタジオOWL" class="link-btn">
+                <span class="icon">📍</span>
+                <span class="label">ACCESS & MAP</span>
+                <span class="sub">松山市三番町3丁目6-2</span>
+            </a>
+        </section>
+
+        <section class="share">
+            <p class="share-text">SHARE THIS CARD</p>
+            <div class="qr-wrapper">
+                <img id="qrCode" src="" alt="Scan QR Code" class="qr-img">
+            </div>
+            <p class="qr-info">カメラで読み取ってページを保存</p>
+        </section>
+
+        <section class="print-cards">
+            <h2 class="print-title">📇 PRINT CARD</h2>
+            <p class="print-desc">長押しで画像を保存 → 印刷してお使いください</p>
+
+            <div class="card-preview-area">
+                <p class="card-label">— おもて —</p>
+                <div class="biz-card front" id="cardFront">
+                    <div class="card-accent-top"></div>
+                    <div class="card-body">
+                        <div class="card-logo">☕ ♪</div>
+                        <h3 class="card-name">Studio OWL</h3>
+                        <p class="card-tagline">Live Music Venue & Cafe</p>
+                    </div>
+                    <div class="card-accent-bottom"></div>
+                </div>
+
+                <p class="card-label">— うら —</p>
+                <div class="biz-card back" id="cardBack">
+                    <div class="card-accent-top"></div>
+                    <div class="card-back-body">
+                        <div class="card-info-block">
+                            <p class="card-addr">〒790-0003<br>愛媛県松山市三番町3丁目6-2<br>ab's square 2F</p>
+                            <p class="card-web">https://owl21.info/</p>
+                            <p class="card-tel">TEL: 089-941-0036</p>
+                            <p class="card-sns">IG: @studio_owl.ehime</p>
+                        </div>
+                        <div class="card-qr">
+                            <img id="cardQr" src="" alt="QR" class="card-qr-img">
+                        </div>
+                    </div>
+                    <div class="card-accent-bottom"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Studio OWL / Powered by Antigravity</p>
+    </footer>
+    <script>
+        // QRコードを現在のURLから自動生成
+        const pageUrl = encodeURIComponent(window.location.href);
+        const qrSrc = 'https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=' + pageUrl;
+        document.getElementById('qrCode').src = qrSrc;
+        // 名刺裏面のQRも同じURL
+        const cardQr = document.getElementById('cardQr');
+        if (cardQr) cardQr.src = 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=' + pageUrl;
+    </script>
+</body>
+</html>
